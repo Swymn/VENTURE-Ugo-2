@@ -5,15 +5,16 @@ import java.util.Map;
 
 public class Main {
 
-    public static void main(String args[]) {
-        ISymptomReader reader = new ReadSymptomDataFromFile("symptoms.txt");
-        ISymptomWriter writer = new WriteSymptomDataToFile();
+    public static void main(String[] args) {
+        // Read symptoms from file, count them, sort them and write them to file
+        final ISymptomReader reader = new ReadSymptomDataFromFile("symptoms.txt");
+        final ISymptomWriter writer = new WriteSymptomDataToFile();
 
-        AnalyticsCounter analytics = new AnalyticsCounter(reader, writer);
+        final AnalyticsCounter analytics = new AnalyticsCounter(reader, writer);
 
-        List<String> symptoms = analytics.getSymptoms();
-        Map<String, Integer> count = analytics.countSymptoms(symptoms);
-        Map<String, Integer> sort = analytics.sortSymptoms(count);
+        final List<String> symptoms = analytics.getSymptoms();
+        final Map<String, Integer> count = analytics.countSymptoms(symptoms);
+        final Map<String, Integer> sort = analytics.sortSymptoms(count);
 
         analytics.writeSymptoms(sort);
     }
